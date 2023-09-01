@@ -54,3 +54,17 @@ body {
     background-color: black;
 }
 
+.action-btn-cont>*{
+    font-size: 2rem;
+    color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.toolbox-color-cont>*:hover, .action-btn-cont>*:hover {
+    background-color: #485460;
+}
+
