@@ -68,3 +68,23 @@ body {
     background-color: #485460;
 }
 
+.modal-cont {
+    height: 50vh;
+    width: 90vh;
+    background-color: lightblue;
+    position: absolute;
+    top: calc((100vh - 50vh)/2);
+    left: calc(64vh);
+    display: none;
+}
+
+textarea {
+    height: 100%;
+    width: 75%;
+    background-color: #dfe4ea;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
