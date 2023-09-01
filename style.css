@@ -41,3 +41,16 @@ body {
     width: 3rem;
 }
 
+.lightpink {
+    background-color: lightpink;
+}
+.lightgreen {
+    background-color: lightgreen;
+}
+.lightblue {
+    background-color: lightblue;
+}
+.black {
+    background-color: black;
+}
+
