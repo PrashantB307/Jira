@@ -97,3 +97,45 @@ if(localStorage.getItem("tickets")) {
     })
 } 
 
+// Filter tickets on the basis of ticket colors
+for(let i = 0; i < toolBoxColors.length; i++){
+    toolBoxColors[i].addEventListener("click", function () {
+        let currtoolBoxColor = toolBoxColors[i].classList[0];
+
+        let filteredTickets = ticketArr.filter(function (ticketObj) {
+            if(currtoolBoxColor == ticketObj.ticketColor) return ticketObj;
+            //return currtoolBoxColor == ticketObj.ticketColor;
+        });
+
+        // Remove all the tickets
+        let allTickets = document.querySelectorAll(".ticket-cont");
+        for(let  i = 0; i < allTickets.length; i++){
+            allTickets[i].remove();
+        }
+
+        // Display Filtered Tickets
+        filteredTickets.forEach(function(ticketObj) {
+            createTicket(
+                ticketObj.ticketColor,
+                ticketObj.data,
+                ticketObj.ticketId
+            );
+        })
+    })
+
+    // To display all the tickets of all colors on double clicking.
+    toolBoxColors[i].addEventListener("dblclick", function () {
+
+        // Remove all the color specific tickets.
+        let allTickets = document.querySelectorAll(".ticket-cont");
+        for(let i = 0; i < allTickets.length; i++) {
+            allTickets[i].remove();
+        }
+
+        // Display all tickets.
+        ticketArr.forEach(function (ticketObj) {
+            createTicket(ticketObj.ticketColor, ticketObj.data, ticketObj.ticketId);
+        });
+    })
+}
+
