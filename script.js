@@ -55,3 +55,37 @@ modalCont.addEventListener("keydown", function (e) {
     }
 }); 
 
+// Function to create new ticket
+function createTicket(ticketColor, data, ticketId) {
+    let id = ticketId || uid();
+    let ticketCont = document.createElement("div"); 
+    ticketCont.setAttribute("class", "ticket-cont");
+    ticketCont.innerHTML = `
+        <div class="ticket-color ${ticketColor}"></div>
+        <div class="ticket-id">${id}</div>  
+        <div class="task-area">${data}</div>
+        <div class="ticket-lock">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+    `;
+
+    mainCont.appendChild(ticketCont);
+
+    handleRemoval(ticketCont, id);
+    handleColor(ticketCont, id);
+    handleLock(ticketCont, id);
+
+    // If ticket is being created for the 1st time,then ticket
+    // id would be undefined.
+    if(!ticketId) {
+        ticketArr.push(
+            {
+                ticketColor, 
+                data, 
+                ticketId: id
+            }
+        );
+        localStorage.setItem("tickets", JSON.stringify(ticketArr));
+    }
+};
+
