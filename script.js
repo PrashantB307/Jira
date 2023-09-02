@@ -89,3 +89,11 @@ function createTicket(ticketColor, data, ticketId) {
     }
 };
 
+// Get all tickets from local Storage
+if(localStorage.getItem("tickets")) {
+    ticketArr = JSON.parse(localStorage.getItem("tickets"));
+    ticketArr.forEach(function(ticketObj) {
+        createTicket(ticketObj.ticketColor, ticketObj.data, ticketObj.ticketId);
+    })
+} 
+
