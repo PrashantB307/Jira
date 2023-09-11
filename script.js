@@ -139,3 +139,15 @@ for(let i = 0; i < toolBoxColors.length; i++){
     })
 }
 
+// On clicking remove BTN make color red and again click make white
+let removeBtnActive = false;
+removeBtn.addEventListener("click", function () {
+    if(removeBtnActive) {
+        removeBtn.style.color = "white";
+    }
+    else {
+        removeBtn.style.color = "red";
+    }
+    removeBtnActive = !removeBtnActive;
+});
+
