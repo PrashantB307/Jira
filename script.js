@@ -169,3 +169,35 @@ function handleRemoval(ticket, id) {
 }
 
 
+// Returns idx of the tickets inside local storage array
+function getTicketIdx(id) {
+    let ticketIdx = ticketArr.findIndex(function (ticketObj) {
+        return ticketObj.ticketId == id;
+    })
+    return ticketIdx;
+}
+
+// Change priority color of the tickets
+function handleColor(ticket, id) {
+    let ticketColorStrip = ticket.querySelector(".ticket-color");
+    
+    ticketColorStrip.addEventListener("click", function () {
+        let currTicketColor = ticketColorStrip.classList[1];
+        // ['lightpink', 'lightgreen', 'lightblue', 'black']
+        let currTicketColorIdx = colors.indexOf(currTicketColor);
+
+        let newTicketColorIdx = currTicketColorIdx + 1;
+
+        newTicketColorIdx = newTicketColorIdx % colors.length;
+        let newTicketColor = colors[newTicketColorIdx];
+
+        ticketColorStrip.classList.remove(currTicketColor);
+        ticketColorStrip.classList.add(newTicketColor);
+
+        // Local storage update
+        let ticketIdx = getTicketIdx(id);
+        ticketArr[ticketIdx].ticketColor = newTicketColor;
+        localStorage.setItem("tickets", JSON.stringify(ticketArr));
+    });
+}
+
