@@ -201,3 +201,31 @@ function handleColor(ticket, id) {
     });
 }
 
+// Lock and Unlock to make content editable true and false
+function handleLock(ticket, id) {
+    // Icons ko append in ticket
+
+    let ticketLockEle = ticket.querySelector(".ticket-lock");
+    let ticketLock = ticketLockEle.children[0];
+    let ticketTaskArea = ticket.querySelector(".task-area");
+    //console.log(ticketLock);
+
+    // Toggle of icons and content editable property
+    ticketLock.addEventListener("click", function () {
+        let ticketIdx = getTicketIdx(id);
+        if(ticketLock.classList.contains(lockClass)) {
+            ticketLock.classList.remove(lockClass);
+            ticketLock.classList.add(unlockClass);
+            ticketTaskArea.setAttribute("contenteditable", "true");
+        }
+        else {  // if lock is open
+            ticketLock.classList.remove(unlockClass);
+            ticketLock.classList.add(lockClass);
+            ticketTaskArea.setAttribute("contenteditable", "false");
+        }
+
+        ticketArr[ticketIdx].data = ticketTaskArea.innerText;
+        localStorage.setItem["tickets", JSON.stringify(ticketArr)]; 
+    });
+    
+}
