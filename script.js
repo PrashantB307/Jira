@@ -57,7 +57,8 @@ modalCont.addEventListener("keydown", function (e) {
 
 // Function to create new ticket
 function createTicket(ticketColor, data, ticketId) {
-    let id = ticketId || uid();
+    // let id = ticketId || uid();
+    let id = ticketId;
     let ticketCont = document.createElement("div"); 
     ticketCont.setAttribute("class", "ticket-cont");
     ticketCont.innerHTML = `
